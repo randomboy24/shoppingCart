@@ -9,7 +9,7 @@ interface storeItemProps {
 export const StoreItems = ({name,imgUrl,price}:storeItemProps) => {
     let isClicked = false;
     return (
-        <div className='md:w-1/3 w-screen flex justify-center  h-3/6 '>
+        <div className='md:w-1/3 w-screen flex justify-center  md:h-3/6 h-3/5'>
             <div className='w-9/12 border mb-10'>
                 <img className="h-2/3 w-full"src={`${imgUrl}`} />
                 <div className='flex justify-between w-full'>
