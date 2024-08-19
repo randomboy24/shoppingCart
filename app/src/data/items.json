@@ -1,0 +1,26 @@
+[
+    {
+        "id":1,
+        "name":"Book",
+        "price":10.99,
+        "imgUrl":"../public/img/book.jpg"
+    },
+    {
+        "id":2,
+        "name":"Headphone",
+        "price":30.22,
+        "imgUrl":"../public/img/headhphone.jpg"
+    },
+    {
+        "id":3,
+        "name":"Laptop",
+        "price":300,
+        "imgUrl":"../public/img/laptop.jpg"
+    },
+    {
+        "id":4,
+        "name":"Lamborghini",
+        "price":400,
+        "imgUrl":"../public/img/lambo.jpg"
+    }
+]
