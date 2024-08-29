@@ -5,7 +5,7 @@ import { useState } from "react"
 export const Navbar = () => {
     const [isShoppingCartOpen,setIsShoppingCartOpen] = useState(false)
     return (
-        <div>{isShoppingCartOpen?<ShoppingCart />:null}
+        <div>{isShoppingCartOpen?<ShoppingCart setIsShoppingCartOpen={setIsShoppingCartOpen} />:null}
             <div className="flex h-20 shadow-lg bg-white justify-between">
                 <div className="flex ">
                     <div className="flex flex-col justify-center ml-6 text-2xl ">

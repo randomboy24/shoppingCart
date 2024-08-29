@@ -1,15 +1,27 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { ShoppingCartContext } from "../context/ShoppingCartContext"
 import { X } from "lucide-react"
 
 
-export const ShoppingCart = () => {
+export const ShoppingCart = ({setIsShoppingCartOpen}:any) => {
+    const [isVisible, setIsVisible] = useState(false);
+    useEffect(() => {
+        // Trigger visibility change when the component mounts
+        setIsVisible(true);
+    }, []);
     const {items} = useContext(ShoppingCartContext)
     const {setItems} = useContext(ShoppingCartContext)
     return (
-        <div className="fixed top-0 z-50 right-0 w-[30%] bg-white border-l border-l-black  h-screen pl-5">
-            <div className='mt-10 text-3xl '>
-                Cart
+        <div className={`fixed top-0 z-50 right-0 w-screen md:w-[30%] bg-white border-l border-l-black  h-screen pl-5 transition-transform duration-200 ease-in ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'} `}>
+            <div className='mt-10 flex justify-between'>
+                <div className="text-3xl">
+                    Cart
+                </div>
+                <div>
+                    <X size={44} className="text-gray-500 hover:cursor-pointer" onClick={() => {
+                        setIsShoppingCartOpen(false)
+                    }}/>
+                </div>
             </div>
             {items.map(item => 
             item.quantity>0?
