@@ -17,6 +17,10 @@ export const ShoppingCart = ({setIsShoppingCartOpen}:any) => {
                 <div className="text-3xl">
                     Cart
                 </div>
+                {items.filter((item) => item.quantity > 0 ).length===0?
+                <div className="h-screen flex flex-col justify-center items-center text-black text-3xl font-semibold mr-5 sm:mr-0">
+                    Your cart is Empty
+                </div>:null}
                 <div>
                     <X size={44} className="text-gray-500 hover:cursor-pointer" onClick={() => {
                         setIsShoppingCartOpen(false)
@@ -26,7 +30,7 @@ export const ShoppingCart = ({setIsShoppingCartOpen}:any) => {
             {items.map(item => 
             item.quantity>0?
             <div className="flex justify-between mt-14 items-center">
-                <div className="w-52 h-32 bg-gray-200 flex-shrink-0">
+                <div className="sm:w-52 sm:h-32 w-32 h-16 bg-gray-200 flex-shrink-0">
                     <img className="w-full h-full object-cover" src={item.imgUrl} alt={item.name} />
                 </div>
                 <div className="flex flex-col justify-center items-start flex-grow ml-4">

@@ -22,5 +22,11 @@
         "name":"Lamborghini",
         "price":400,
         "imgUrl":"../public/img/lambo.jpg"
+    },
+    {
+        "id":5,
+        "name":"phone",
+        "price":10.99,
+        "imgUrl":"../public/img/iphone.webp"
     }
 ]
