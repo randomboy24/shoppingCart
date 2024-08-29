@@ -1,16 +1,23 @@
+import { useContext, useState } from 'react'
 import storeItems from '../data/items.json'
+import { ShoppingCartContext } from '../context/ShoppingCartContext'
 
 interface storeItemProps {
     name:string,
     imgUrl:string,
-    price:number
+    price:number,
+    id:number,
+    quantity:number
 }
 
-export const StoreItems = ({name,imgUrl,price}:storeItemProps) => {
-    let isClicked = false;
+export const StoreItems = ({name,imgUrl,price,id,quantity}:storeItemProps) => {
+    console.log(quantity)
+    
+    const { setItems } = useContext(ShoppingCartContext);
+    const { items } = useContext(ShoppingCartContext)
     return (
-        <div className='md:w-1/3 w-screen flex justify-center  md:h-3/6 h-3/5'>
-            <div className='w-9/12 border mb-10'>
+        <div className='md:w-1/3 w-screen flex justify-center  md:h-[53%] h-[60%]'>
+            <div className='w-9/12 border mb-10 shadow'>
                 <img className="h-2/3 w-full"src={`${imgUrl}`} />
                 <div className='flex justify-between w-full'>
                     <div className='text-3xl font-serif mt-4 pt-4 ml-4 pl-6 md:ml-0 md:pl-6'>
@@ -20,10 +27,20 @@ export const StoreItems = ({name,imgUrl,price}:storeItemProps) => {
                         ${price}
                     </div>
                 </div>
-                {isClicked?null:
-                    <div className='flex justify-center mt-5 h-12'>
+                {quantity>0?
+                <div className='flex justify-center mt-5'>
+                    <button className='bg-blue-600 text-white w-12 h-12 text-4xl rounded-md' onClick={() => {
+                        setItems(prevItems => prevItems.map((item) => item.id === id? {...item,quantity:item.quantity- 1}:item ))
+                    }}>-</button>
+                    <span className='flex flex-col justify-center text-3xl ml-5'>{quantity}&nbsp; </span>
+                    <span className='flex flex-col justify-center text-lg mt-2 mr-5'>in Cart</span>
+                    <button className='bg-blue-600 text-white w-12 h-12 text-4xl rounded-md' onClick={() => {
+                        setItems(PrevItems => PrevItems.map(item => item.id === id?{...item,quantity:item.quantity+1}:item))
+                    }}>+</button>
+                </div>
+                :    <div className='flex justify-center mt-5 h-12'>
                         <button className='text-center bg-blue-500 h-full text-white text-xl w-11/12 rounded-xl' onClick={() => {
-                            isClicked = !isClicked;
+                           setItems(prevItems => prevItems.map(item => item.id===id?{...item,quantity:item.quantity+1}:item))
                         }}>
                             + Add to Cart
                         </button>
