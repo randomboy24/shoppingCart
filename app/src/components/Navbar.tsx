@@ -8,7 +8,7 @@ export const Navbar = () => {
     const { items } = useContext(ShoppingCartContext);
     return (
         <div>{isShoppingCartOpen?<ShoppingCart setIsShoppingCartOpen={setIsShoppingCartOpen} />:null}
-            <div className="flex h-20 shadow-lg bg-white  border-b border-black justify-between sticky">
+            <div className="flex h-20 shadow-lg bg-white   justify-between sticky">
                 <div className="flex ">
                     <div className="flex flex-col justify-center ml-6 text-2xl ">
                         <Link to={'/'}>
@@ -29,9 +29,9 @@ export const Navbar = () => {
                 <div className="pt-[3px]">  
                     <div className="flex flex-col justify-center mr-10 border w-[75px]
                         rounded-full border-gray-500 pl-3 h-[75px] cursor-pointer" onClick={() => setIsShoppingCartOpen(true) }>
-                        <div className="bg-red-600 h-[24px] w-[24px] absolute top-auto ml-7 mt-16 rounded-full mr-2 text-white pl-2
-                        pr-1 border-white font-semibold">
-                            {(items.filter(item => item.quantity>0)).length}
+                        <div className={`bg-red-600 h-[24px] w-[24px] absolute top-auto ml-7 mt-16 rounded-full mr-2 text-white ${(items.reduce((accumulator,item) => {return item.quantity + accumulator},0))>9?'pl-[3px]':'pl-2'}
+                        pr-1 border-white font-semibold`}>
+                            {(items.reduce((accumulator,item) => {return item.quantity + accumulator},0))}
                         </div>
                         <div>
                             <CartIcon />
