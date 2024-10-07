@@ -28,5 +28,35 @@
         "name":"phone",
         "price":10.99,
         "imgUrl":"../public/img/iphone.webp"
+    },
+    {
+        "id":6,
+        "name":"Book",
+        "price":10.99,
+        "imgUrl":"../public/img/book.jpg"
+    },
+    {
+        "id":7,
+        "name":"Headphone",
+        "price":30.22,
+        "imgUrl":"../public/img/headhphone.jpg"
+    },
+    {
+        "id":8,
+        "name":"Laptop",
+        "price":300,
+        "imgUrl":"../public/img/laptop.jpg"
+    },
+    {
+        "id":9,
+        "name":"Lamborghini",
+        "price":400,
+        "imgUrl":"../public/img/lambo.jpg"
+    },
+    {
+        "id":10,
+        "name":"phone",
+        "price":10.99,
+        "imgUrl":"../public/img/iphone.webp"
     }
 ]

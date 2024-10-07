@@ -9,10 +9,10 @@ import { useState } from 'react';
 
 const App = () => {
   // Initialize the items state
-  const [items, setItems] = useState(storeItems.map(item => ({
-    ...item,
-    quantity: 0
-  })));
+  // const [items, setItems] = useState(storeItems.map(item => ({
+  //   ...item,
+  //   quantity: 0
+  // })));
 
   return (
     <ShoppingCartProvider>

@@ -8,7 +8,7 @@ export const Navbar = () => {
     const { items } = useContext(ShoppingCartContext);
     return (
         <div>{isShoppingCartOpen?<ShoppingCart setIsShoppingCartOpen={setIsShoppingCartOpen} />:null}
-            <div className="flex h-20 shadow-lg bg-white   justify-between sticky">
+            <div className="flex h-20 shadow-lg bg-white top-0 z-10  justify-between sticky">
                 <div className="flex ">
                     <div className="flex flex-col justify-center ml-6 text-2xl ">
                         <Link to={'/'}>
