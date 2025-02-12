@@ -1,37 +1,52 @@
-import { createContext, ReactNode, useState } from "react";
-import storeItems from '../data/items.json';
-
-
+import { createContext, ReactNode, useState, useEffect } from "react";
 
 interface itemsTypes {
-    id:number,
-    name:string,
-    imgUrl:string,
-    price:number,
-    quantity:number
+  id: number;
+  name: string;
+  imgUrl: string;
+  price: number;
+  quantity: number;
 }
 
 interface ShoppingCartContextTypes {
-    items:itemsTypes[],
-    setItems:React.Dispatch<React.SetStateAction<itemsTypes[]>>
+  items: itemsTypes[];
+  setItems: React.Dispatch<React.SetStateAction<itemsTypes[]>>;
 }
-// Create a context with default values
+
 export const ShoppingCartContext = createContext<ShoppingCartContextTypes>({
-    items: [],
-    setItems: () => {}
+  items: [],
+  setItems: () => {},
 });
 
-export const ShoppingCartProvider = ({ children }:any) => {
-    const [items,setItems] = useState( storeItems.map(item => {
-        return {
-            ...item,
-            quantity:0
-        }
-    }))
+export const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
+  const [items, setItems] = useState<itemsTypes[]>([]);
 
-    return (
-        <ShoppingCartContext.Provider value={{ items, setItems }}>
-            {children}
-        </ShoppingCartContext.Provider>
-    );
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch("https://dummyjson.com/products");
+        const data = await res.json();
+
+        const formattedItems = data.products.map((product: any) => ({
+          id: product.id,
+          name: product.title,
+          imgUrl: product.thumbnail,
+          price: product.price,
+          quantity: 0,
+        }));
+
+        setItems(formattedItems);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  return (
+    <ShoppingCartContext.Provider value={{ items, setItems }}>
+      {children}
+    </ShoppingCartContext.Provider>
+  );
 };

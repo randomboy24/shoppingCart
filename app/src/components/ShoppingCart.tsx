@@ -12,7 +12,7 @@ export const ShoppingCart = ({setIsShoppingCartOpen}:any) => {
     const {items} = useContext(ShoppingCartContext)
     const {setItems} = useContext(ShoppingCartContext)
     return (
-        <div className={`fixed top-0 z-50 right-0 w-screen md:w-[30%] bg-white border-l border-l-black  h-screen pl-5 transition-transform duration-200 ease-in ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'} `}>
+        <div className={`fixed top-0 z-50 right-0 w-screen md:w-[30%] bg-white shadow-lg shadow-slate-300  h-screen pl-5 transition-transform duration-200 ease-in ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-full'} `}>
             <div className='mt-10 flex justify-between'>
                 <div className="text-3xl">
                     Cart
